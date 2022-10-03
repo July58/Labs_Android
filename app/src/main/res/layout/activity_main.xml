@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A7CCF4"
+    tools:context=".MainActivity" >
+
+    <RadioGroup
+
+        android:id="@+id/radios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_field"
+
+>
+
+        <RadioButton
+            android:id="@+id/rsanserifblack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="25sp"
+            android:layout_marginTop="10sp"
+            android:fontFamily="@font/sants_serif_black"
+            android:text="sans-serif-black" />
+
+        <RadioButton
+            android:id="@+id/rcursive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25sp"
+            android:layout_marginTop="10sp"
+            android:fontFamily="@font/cursive"
+            android:text="cursive"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rcasual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25sp"
+            android:layout_marginTop="10sp"
+            android:fontFamily="@font/casual"
+            android:text="casual"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rmonospace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25sp"
+            android:layout_marginTop="10sp"
+            android:fontFamily="monospace"
+            android:text="monospace"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25sp"
+        android:text="Введіть текст:"
+        android:textColor="#300381"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/user_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="21dp"
+        android:layout_marginRight="10sp"
+        android:background="@color/material_dynamic_neutral100"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Type here" />
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_field"
+        android:layout_marginLeft="55sp"
+        android:layout_marginTop="259dp"
+        android:layout_marginRight="55sp"
+        android:onClick="buttonok"
+        android:text="OK" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ok"
+        android:layout_marginTop="25dp"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView3"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20sp"
+        android:onClick="buttoncancel"
+        android:text="Cancel" />
+
+
+</RelativeLayout>

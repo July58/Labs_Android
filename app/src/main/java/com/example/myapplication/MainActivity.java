@@ -42,59 +42,60 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void buttonok(View view) {
-
+        int radioId = radios.getCheckedRadioButtonId();
+        font = findViewById(radioId);
         if (user_field.getText().toString().trim().equals("")) {
             Toast.makeText(MainActivity.this, "Текст не введено", Toast.LENGTH_LONG).show();
         } else {
-            buttoncheck();
+            if (radioId == -1) {
+                Toast.makeText(MainActivity.this, "Зробіть вибір шрифту!!!!!", Toast.LENGTH_LONG).show();
+            } else {
+                buttoncheck(radioId);
+                writetext();
+            }
+
         }
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void buttoncheck() {
+    public void buttoncheck(int radioId) {
 
-        Integer radioId = radios.getCheckedRadioButtonId();
-        font = findViewById(radioId);
-
-        if (radioId.equals(null)){
-            Toast.makeText(MainActivity.this, "Зробіть вибір шрифту!!!!!", Toast.LENGTH_LONG).show();
-        }
 
         switch (radioId) {
             case R.id.rsanserifblack:
 
                 Typeface san_serif_black = getResources().getFont(R.font.sants_serif_black);
                 textView3.setTypeface(san_serif_black);
-                writetext();
+
                 break;
             case R.id.rcursive:
                 Typeface cursive = getResources().getFont(R.font.cursive);
                 textView3.setTypeface(cursive);
-                writetext();
+
                 break;
             case R.id.rcasual:
 
                 Typeface casual = getResources().getFont(R.font.casual);
                 textView3.setTypeface(casual);
-                writetext();
+
                 break;
             case R.id.rmonospace:
 
                 Typeface fontmonospace = Typeface.MONOSPACE;
                 textView3.setTypeface(fontmonospace);
-                writetext();
+
                 break;
-            default:
-                Toast.makeText(MainActivity.this, "Зробіть вибір шрифту", Toast.LENGTH_LONG).show();
-                break;
+
         }
-        radios.clearCheck();
+
 
     }
 
     public void buttoncancel(View view) {
         textView3.setText("");
+        radios.clearCheck();
     }
 
     public void writetext() {

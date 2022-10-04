@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.annotation.SuppressLint;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,14 +47,19 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Текст не введено", Toast.LENGTH_LONG).show();
         } else {
             buttoncheck();
-             }
+        }
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void buttoncheck() {
 
-        int radioId = radios.getCheckedRadioButtonId();
+        Integer radioId = radios.getCheckedRadioButtonId();
         font = findViewById(radioId);
+
+        if (radioId.equals(null)){
+            Toast.makeText(MainActivity.this, "Зробіть вибір шрифту!!!!!", Toast.LENGTH_LONG).show();
+        }
 
         switch (radioId) {
             case R.id.rsanserifblack:
@@ -63,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 writetext();
                 break;
             case R.id.rcursive:
-
                 Typeface cursive = getResources().getFont(R.font.cursive);
                 textView3.setTypeface(cursive);
                 writetext();
@@ -92,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         textView3.setText("");
     }
 
-    public void writetext(){
+    public void writetext() {
         String text = user_field.getText().toString();
         textView3.setText(text);
     }

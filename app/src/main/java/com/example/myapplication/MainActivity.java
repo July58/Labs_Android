@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void buttonok(View view) {
+    public void buttonOk(View view) {
         int radioId = radios.getCheckedRadioButtonId();
         font = findViewById(radioId);
         if (user_field.getText().toString().trim().equals("")) {
@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
             if (radioId == -1) {
                 Toast.makeText(MainActivity.this, "Зробіть вибір шрифту!!!!!", Toast.LENGTH_LONG).show();
             } else {
-                buttoncheck(radioId);
-                writetext();
+                buttonCheck(radioId);
+                writeText();
             }
 
         }
@@ -60,9 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("NonConstantResourceId")
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void buttoncheck(int radioId) {
-
-
+    public void buttonCheck(int radioId) {
         switch (radioId) {
             case R.id.rsanserifblack:
 
@@ -93,12 +91,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void buttoncancel(View view) {
+    public void buttonCancel(View view) {
         textView3.setText("");
         radios.clearCheck();
     }
 
-    public void writetext() {
+    public void writeText() {
         String text = user_field.getText().toString();
         textView3.setText(text);
     }

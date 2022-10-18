@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="Ok">OK</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Type">Type here</string>
+    <string name="input">Введіть ваш текст:</string>
+    <string name="sans_serif_black">sans-serif-black</string>
+    <string name="cursive">cursive</string>
+    <string name="casual">casual</string>
+    <string name="monospace">monospace</string>
+</resources>

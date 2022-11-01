@@ -4,8 +4,15 @@
     <string name="Cancel">Cancel</string>
     <string name="Type">Type here</string>
     <string name="input">Введіть ваш текст:</string>
-    <string name="sans_serif_black">sans-serif-black</string>
+    <string name="sans_serif_black">sans_serif_black</string>
     <string name="cursive">cursive</string>
     <string name="casual">casual</string>
     <string name="monospace">monospace</string>
+    <array name="fonts">
+        <item>sants_serif_black</item>
+        <item>cursive</item>
+        <item>casual</item>
+        <item>MONOSPACE</item>
+
+    </array>
 </resources>

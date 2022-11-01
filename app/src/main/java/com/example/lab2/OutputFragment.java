@@ -1,8 +1,10 @@
 package com.example.lab2;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,6 @@ public class OutputFragment extends Fragment {
     private TextView textView3;
     private Button cancel;
 
-
        @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,9 +33,15 @@ public class OutputFragment extends Fragment {
            public void onClick(View view) {
                textView3.setText("");
                ((RadioGroup)getActivity().findViewById(R.id.radios)).clearCheck();
-               ((EditText)getActivity().findViewById(R.id.user_field)).setText("");
-           }
+                         }
        });
 
     return v;}
+
+    public void setNewText(String text, Typeface typeface) {
+        textView3 = getView().findViewById(R.id.textView3);
+        textView3.setTypeface(typeface);
+        textView3.setText(text);
+
+    }
 }

@@ -63,7 +63,6 @@ public class InputFragment extends Fragment {
             public void onClick(View view) {
                 int radioId = radios.getCheckedRadioButtonId();
                 font = view.findViewById(radioId);
-
                 if (user_field.getText().toString().trim().equals("")) {
                     Toast.makeText(getActivity(), "Текст не введено", Toast.LENGTH_LONG).show();
                 } else {
@@ -72,12 +71,15 @@ public class InputFragment extends Fragment {
                     } else {
                        Typeface typeface = buttonCheck(radioId);
                        String text = String.valueOf(user_field.getText());
-
-
                        fragmentSendDataListener.onSendData(text, typeface);
+                       FileAccess fileAccess = new FileAccess(getActivity());
+                       fileAccess.saveText(view, text);
+
                     }
 
                 }
+
+
             }
         });
 

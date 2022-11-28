@@ -22,4 +22,15 @@
         android:name="com.example.lab2.OutputFragment"
         tools:layout="@layout/fragment_output" />
 
+    <Button
+        android:id="@+id/open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67pt"
+        android:layout_marginTop="300pt"
+        android:layout_marginEnd="30pt"
+        android:onClick="open"
+        android:text="@string/open" />
+
+
 </RelativeLayout>

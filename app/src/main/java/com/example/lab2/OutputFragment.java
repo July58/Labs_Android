@@ -32,7 +32,7 @@ public class OutputFragment extends Fragment {
            @Override
            public void onClick(View view) {
                textView3.setText("");
-               ((RadioGroup)getActivity().findViewById(R.id.radios)).clearCheck();
+
                          }
        });
 

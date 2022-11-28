@@ -8,11 +8,7 @@
     <string name="cursive">cursive</string>
     <string name="casual">casual</string>
     <string name="monospace">monospace</string>
-    <array name="fonts">
-        <item>sants_serif_black</item>
-        <item>cursive</item>
-        <item>casual</item>
-        <item>MONOSPACE</item>
+   <string name="output">Output file:</string>
+    <string name="open">Відкрити</string>
 
-    </array>
 </resources>

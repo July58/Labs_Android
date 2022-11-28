@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,6 +32,11 @@ public class MainActivity extends AppCompatActivity implements InputFragment.OnF
             .findFragmentById(R.id.fragment_output);
     if(fragment!= null)
         fragment.setNewText(text, typeface);
+    }
+
+    public void open(View view) {
+        Intent intent = new Intent(MainActivity.this, FileReaderActivity.class);
+        startActivity(intent);
     }
 }
 

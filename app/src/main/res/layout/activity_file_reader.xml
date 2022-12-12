@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#A7CCF4"
-    tools:context=".FileReaderActivity">
+    tools:context=".ReaderActivity">
 
     <TextView
         android:id="@+id/textContent"
@@ -19,7 +19,7 @@
         android:background="#8BCED6"
         android:fontFamily="sans-serif"
         android:text=""
-        android:textSize="14sp"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="31dp"
         tools:layout_editor_absoluteY="85dp" />
 

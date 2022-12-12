@@ -93,5 +93,4 @@
         android:text="@string/Ok"
         tools:ignore="UsingOnClickInXml" />
 
-
 </FrameLayout>

@@ -2,7 +2,6 @@ package com.example.lab2;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,13 +19,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lab2.db.DBManager;
+
 
 public class InputFragment extends Fragment {
 
     private EditText user_field;
     private Button ok;
     private RadioGroup radios;
-    private RadioButton font;
+
+    private DBManager dbManager;
 
 
     interface OnFragmentSendDataListener {
@@ -47,6 +49,12 @@ public class InputFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        dbManager.openDB();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,30 +64,35 @@ public class InputFragment extends Fragment {
         ok = view.findViewById(R.id.ok);
         radios = view.findViewById(R.id.radios);
 
+        dbManager = new DBManager(getActivity());
+
 
         ok.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 int radioId = radios.getCheckedRadioButtonId();
-                font = view.findViewById(radioId);
+                RadioButton rb = getView().findViewById(radioId);
+
                 if (user_field.getText().toString().trim().equals("")) {
                     Toast.makeText(getActivity(), "Текст не введено", Toast.LENGTH_LONG).show();
                 } else {
                     if (radioId == -1) {
                         Toast.makeText(getActivity(), "Зробіть вибір шрифту", Toast.LENGTH_LONG).show();
                     } else {
-                       Typeface typeface = buttonCheck(radioId);
-                       String text = String.valueOf(user_field.getText());
-                       fragmentSendDataListener.onSendData(text, typeface);
-                       FileAccess fileAccess = new FileAccess(getActivity());
-                       fileAccess.saveText(view, text);
+                        Typeface typeface = buttonCheck(radioId);
+                        String text = String.valueOf(user_field.getText());
+                        fragmentSendDataListener.onSendData(text, typeface);
+                        if (!text.isEmpty() && !rb.getText().toString().isEmpty()) {
+                            if (dbManager.insertToDB(text, String.valueOf(rb.getText()))) {
+                                Toast.makeText(getActivity(), "Inserted", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getActivity(), "NOT Inserted", Toast.LENGTH_LONG).show();
+                            }
+                        }
 
                     }
-
                 }
-
-
             }
         });
 
@@ -88,20 +101,30 @@ public class InputFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Typeface buttonCheck(int radioId) {
-        switch (radioId){
-            case (R.id.monospace): return Typeface.MONOSPACE;
-            case (R.id.casual): return getResources().getFont(R.font.casual);
-            case (R.id.sans_serif_black): return getResources().getFont(R.font.sants_serif_black);
-            case (R.id.cursive): return getResources().getFont(R.font.cursive);
+        switch (radioId) {
+            case (R.id.monospace):
+                return Typeface.MONOSPACE;
+            case (R.id.casual):
+                return getResources().getFont(R.font.casual);
+            case (R.id.sans_serif_black):
+                return getResources().getFont(R.font.sants_serif_black);
+            case (R.id.cursive):
+                return getResources().getFont(R.font.cursive);
 
         }
 
         return Typeface.DEFAULT;
     }
 
+    public DBManager getDbManager() {
+        return dbManager;
+    }
 
-
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dbManager.closeDB();
+    }
 }
 
 

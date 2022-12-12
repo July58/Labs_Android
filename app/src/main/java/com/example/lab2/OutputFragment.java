@@ -43,5 +43,6 @@ public class OutputFragment extends Fragment {
         textView3.setTypeface(typeface);
         textView3.setText(text);
 
+
     }
 }

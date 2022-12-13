@@ -49,6 +49,7 @@ public class InputFragment extends Fragment {
         }
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
@@ -63,7 +64,6 @@ public class InputFragment extends Fragment {
         user_field = view.findViewById(R.id.user_field);
         ok = view.findViewById(R.id.ok);
         radios = view.findViewById(R.id.radios);
-
         dbManager = new DBManager(getActivity());
 
 
@@ -80,17 +80,10 @@ public class InputFragment extends Fragment {
                     if (radioId == -1) {
                         Toast.makeText(getActivity(), "Зробіть вибір шрифту", Toast.LENGTH_LONG).show();
                     } else {
-                        Typeface typeface = buttonCheck(radioId);
                         String text = String.valueOf(user_field.getText());
+                        Typeface typeface = buttonCheck(radioId);
                         fragmentSendDataListener.onSendData(text, typeface);
-                        if (!text.isEmpty() && !rb.getText().toString().isEmpty()) {
-                            if (dbManager.insertToDB(text, String.valueOf(rb.getText()))) {
-                                Toast.makeText(getActivity(), "Inserted", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(getActivity(), "NOT Inserted", Toast.LENGTH_LONG).show();
-                            }
-                        }
-
+                        saveData(text, rb.getText().toString());
                     }
                 }
             }
@@ -110,15 +103,21 @@ public class InputFragment extends Fragment {
                 return getResources().getFont(R.font.sants_serif_black);
             case (R.id.cursive):
                 return getResources().getFont(R.font.cursive);
-
         }
-
         return Typeface.DEFAULT;
     }
 
-    public DBManager getDbManager() {
-        return dbManager;
+
+    public void saveData(String text, String font){
+        if (!text.isEmpty() && !font.isEmpty()) {
+            if (dbManager.insertToDB(text, font)) {
+                Toast.makeText(getActivity(), "Дані збережено", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getActivity(), "Дані не збережено", Toast.LENGTH_LONG).show();
+            }
+        }
     }
+
 
     @Override
     public void onDestroy() {

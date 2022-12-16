@@ -16,7 +16,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
      public static final String TABLE_STRUCTURE = "CREATE TABLE IF NOT EXISTS fonts ( _id INTEGER PRIMARY KEY, message TEXT, typeface TEXT)";
      public static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + DB_Name;
      public static final int DB_VERSION = 1;
-     private static MyDBHelper sInstance;
+
 
 
 

@@ -1,4 +1,4 @@
-package com.example.lab2;
+package com.example.lab2.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,6 +19,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lab2.R;
 import com.example.lab2.db.DBManager;
 
 
@@ -31,7 +32,7 @@ public class InputFragment extends Fragment {
     private DBManager dbManager;
 
 
-    interface OnFragmentSendDataListener {
+    public interface OnFragmentSendDataListener {
         void onSendData(String text, Typeface typeface);
     }
 
@@ -51,13 +52,6 @@ public class InputFragment extends Fragment {
 
 
     @Override
-    public void onResume() {
-        super.onResume();
-        dbManager.openDB();
-    }
-
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_input, container, false);
@@ -65,7 +59,7 @@ public class InputFragment extends Fragment {
         ok = view.findViewById(R.id.ok);
         radios = view.findViewById(R.id.radios);
         dbManager = new DBManager(getActivity());
-
+        dbManager.openDB();
 
         ok.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)

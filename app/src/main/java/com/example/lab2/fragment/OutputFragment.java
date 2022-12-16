@@ -1,4 +1,4 @@
-package com.example.lab2;
+package com.example.lab2.fragment;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.example.lab2.R;
 
 
 public class OutputFragment extends Fragment {

@@ -5,9 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
-
-import com.example.lab2.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;

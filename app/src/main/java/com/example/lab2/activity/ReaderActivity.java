@@ -1,4 +1,4 @@
-package com.example.lab2;
+package com.example.lab2.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.lab2.R;
 import com.example.lab2.db.DBManager;
 
 public class ReaderActivity extends AppCompatActivity {
 
     private TextView textView;
-    public View view;
     private DBManager dbManager;
 
     @Override
@@ -22,12 +22,6 @@ public class ReaderActivity extends AppCompatActivity {
         dbManager = new DBManager(ReaderActivity.this);
         dbManager.openDB();
         openData();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        dbManager.openDB();
     }
 
     public void openData(){

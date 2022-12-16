@@ -1,4 +1,4 @@
-package com.example.lab2;
+package com.example.lab2.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.lab2.R;
 import com.example.lab2.db.DBManager;
+import com.example.lab2.fragment.InputFragment;
+import com.example.lab2.fragment.OutputFragment;
 
 public class MainActivity extends AppCompatActivity implements InputFragment.OnFragmentSendDataListener {
 
@@ -38,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements InputFragment.OnF
             Toast.makeText(this, "Дані відсутні", Toast.LENGTH_SHORT).show();
         } else {
             Intent intent = new Intent(this, ReaderActivity.class);
-
             startActivity(intent);
         }
     }

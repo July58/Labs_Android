@@ -33,7 +33,7 @@ public class InputFragment extends Fragment {
 
 
     public interface OnFragmentSendDataListener {
-        void onSendData(String text, Typeface typeface);
+        void onSendData(String text, Typeface typeface, String titleFont);
     }
 
     private OnFragmentSendDataListener fragmentSendDataListener;
@@ -76,8 +76,8 @@ public class InputFragment extends Fragment {
                     } else {
                         String text = String.valueOf(user_field.getText());
                         Typeface typeface = buttonCheck(radioId);
-                        fragmentSendDataListener.onSendData(text, typeface);
-                        saveData(text, rb.getText().toString());
+                        fragmentSendDataListener.onSendData(text, typeface, rb.getText().toString() );
+
                     }
                 }
             }
@@ -102,15 +102,6 @@ public class InputFragment extends Fragment {
     }
 
 
-    public void saveData(String text, String font){
-        if (!text.isEmpty() && !font.isEmpty()) {
-            if (dbManager.insertToDB(text, font)) {
-                Toast.makeText(getActivity(), "Дані збережено", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getActivity(), "Дані не збережено", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
 
 
     @Override

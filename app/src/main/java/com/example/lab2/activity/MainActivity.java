@@ -28,11 +28,12 @@ public class MainActivity extends AppCompatActivity implements InputFragment.OnF
     }
 
     @Override
-    public void onSendData(String text, Typeface typeface) {
+    public void onSendData(String text, Typeface typeface, String titlefont) {
         OutputFragment fragment = (OutputFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragment_output);
         if (fragment != null)
             fragment.setNewText(text, typeface);
+        saveData(text, titlefont);
     }
 
     public void open(View view) {
@@ -42,6 +43,16 @@ public class MainActivity extends AppCompatActivity implements InputFragment.OnF
         } else {
             Intent intent = new Intent(this, ReaderActivity.class);
             startActivity(intent);
+        }
+    }
+
+    public void saveData(String text, String font){
+        if (!text.isEmpty() && !font.isEmpty()) {
+            if (dbManager.insertToDB(text, font)) {
+                Toast.makeText(this, "Дані збережено", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Дані не збережено", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }

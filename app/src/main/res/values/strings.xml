@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lab4</string>
+    <string name="title_app">Choose format</string>
+    <string name="AUDIO">AUDIO</string>
+    <string name="VIDEO">VIDEO</string>
+    <string name="songs">Songs</string>
+    <string name="nosongs">NO SONGS FOUND</string>
+    <string name="title_song">Title of the song</string>
+    <string name="videos">Videos</string>
+    <string name="novideos">NO VIDEO FOUND</string>
+</resources>
